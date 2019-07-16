@@ -10,8 +10,9 @@ RUN swupd bundle-add \
     ccache \
     llvm \
     c-basic && \
-    mkdir /root/.ccache/ && \
-    ln -s /root/.ccache/ /ccache && \
     swupd clean
+RUN mkdir /root/.ccache/
+RUN ln -s /root/.ccache/ /ccache
+
 
 VOLUME [ "/ccache" ]
