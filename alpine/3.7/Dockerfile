@@ -13,7 +13,7 @@ RUN apk add --no-progress --no-cache \
     g++=6.4.0-r5
 RUN ln -s /usr/bin/ccache /usr/local/bin/clang
 RUN ln -s /usr/bin/ccache /usr/local/bin/clang++
-RUN mkdir /root/.ccache/ && \
+RUN mkdir /root/.ccache/
 RUN ln -s /root/.ccache/ /ccache
 
 ENV PATH="/usr/lib/ccache/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
