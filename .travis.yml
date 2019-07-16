@@ -15,10 +15,10 @@ env:
   - DIR=amazonlinux/2
   - DIR=amazonlinux/1
   - DIR=archlinux
-  - DIR=centos/7.4
+  - DIR=centos/7.4.1708
   - DIR=centos/6
-  - DIR=centos/7.6
-  - DIR=centos/7.5
+  - DIR=centos/7.6.1810
+  - DIR=centos/7.5.1804
   - DIR=clearlinux
   - DIR=crux
   - DIR=debian/9
