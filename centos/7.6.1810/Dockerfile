@@ -13,9 +13,10 @@ RUN yum install -y \
     gcc-4.8.5-36.el7_6.2 \
     gcc-c++-4.8.5-36.el7_6.2 \
     ccache-3.3.4-1.el7 && \
-    mkdir /root/.ccache/ && \
-    ln -s /root/.ccache/ /ccache && \
     yum clean all && \
     rm -rf /var/cache/yum
+RUN mkdir /root/.ccache/
+RUN ln -s /root/.ccache/ /ccache
+
 
 VOLUME [ "/ccache" ]
