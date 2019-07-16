@@ -7,34 +7,42 @@ addons:
       - docker-ce
     update: true
 env:
+  - DIR=alpine/latest
   - DIR=alpine/3.6
   - DIR=alpine/3.10
   - DIR=alpine/3.8
   - DIR=alpine/3.7
   - DIR=alpine/3.9
+  - DIR=amazonlinux/latest
   - DIR=amazonlinux/2
   - DIR=amazonlinux/1
-  - DIR=archlinux
+  - DIR=archlinux/latest
+  - DIR=centos/latest
   - DIR=centos/7.4.1708
   - DIR=centos/6
   - DIR=centos/7.6.1810
   - DIR=centos/7.5.1804
-  - DIR=clearlinux
-  - DIR=crux
+  - DIR=clearlinux/latest
+  - DIR=crux/latest
+  - DIR=debian/latest
   - DIR=debian/9
   - DIR=debian/8
   - DIR=debian/10
+  - DIR=fedora/latest
   - DIR=fedora/26
   - DIR=fedora/28
   - DIR=fedora/27
   - DIR=fedora/29
   - DIR=fedora/30
+  - DIR=mageia/latest
   - DIR=mageia/7
   - DIR=mageia/6
+  - DIR=oraclelinux/latest
   - DIR=oraclelinux/7
   - DIR=oraclelinux/7-slim
   - DIR=oraclelinux/6
   - DIR=oraclelinux/6-slim
+  - DIR=ubuntu/latest
   - DIR=ubuntu/18.04
   - DIR=ubuntu/19.04
   - DIR=ubuntu/16.04
