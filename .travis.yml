@@ -52,5 +52,5 @@ install:
   - docker pull "${DOCKER_USERNAME}/${DIR/\/*/}ccache:${DIR#*/}" || true
 script:
   - cd $DIR
-  - docker build --compress -t "${DOCKER_USERNAME}/${DIR/\/*/}ccache:${DIR#*/}" .
+  - docker build --compress -t "${DOCKER_USERNAME}/${DIR/\/*/}ccache:${DIR#*/}" -f Dockerfile .
   - docker push "${DOCKER_USERNAME}/${DIR/\/*/}ccache:${DIR#*/}"
