@@ -19,17 +19,17 @@ RUN yum install -y \
     make -j 4 && \
     make install' &&\
     rm -rf ccache-3.7.1 && \
-    ln -s /usr/bin/ccache /usr/local/bin/clang && \
-    ln -s /usr/bin/ccache /usr/local/bin/clang++ && \
-    ln -s /usr/bin/ccache /usr/local/bin/gcc && \
-    ln -s /usr/bin/ccache /usr/local/bin/g++ && \
-    ln -s /usr/bin/ccache /usr/local/bin/cc && \
-    ln -s /usr/bin/ccache /usr/local/bin/c++ && \
-    mkdir /root/.ccache/ && \
-    ln -s /root/.ccache/ /ccache && \
     yum erase -y \
     findutils && \
     yum clean all && \
     rm -rf /var/cache/yum
+RUN ln -s /usr/bin/ccache /usr/local/bin/clang
+RUN ln -s /usr/bin/ccache /usr/local/bin/clang++
+RUN ln -s /usr/bin/ccache /usr/local/bin/gcc
+RUN ln -s /usr/bin/ccache /usr/local/bin/g++
+RUN ln -s /usr/bin/ccache /usr/local/bin/cc
+RUN ln -s /usr/bin/ccache /usr/local/bin/c++
+RUN mkdir /root/.ccache/
+RUN ln -s /root/.ccache/ /ccache
 
 VOLUME [ "/ccache" ]
