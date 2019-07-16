@@ -1,0 +1,48 @@
+language: bash
+dist: xenial
+services: docker
+addons:
+  apt:
+    packages:
+      - docker-ce
+    update: true
+env:
+  - DIR=alpine/3.6
+  - DIR=alpine/3.10
+  - DIR=alpine/3.8
+  - DIR=alpine/3.7
+  - DIR=alpine/3.9
+  - DIR=amazonlinux/2
+  - DIR=amazonlinux/1
+  - DIR=archlinux
+  - DIR=centos/7.4
+  - DIR=centos/6
+  - DIR=centos/7.6
+  - DIR=centos/7.5
+  - DIR=clearlinux
+  - DIR=crux
+  - DIR=debian/9
+  - DIR=debian/8
+  - DIR=debian/10
+  - DIR=fedora/26
+  - DIR=fedora/28
+  - DIR=fedora/27
+  - DIR=fedora/29
+  - DIR=fedora/30
+  - DIR=mageia/7
+  - DIR=mageia/6
+  - DIR=oraclelinux/7
+  - DIR=oraclelinux/7-slim
+  - DIR=oraclelinux/6
+  - DIR=oraclelinux/6-slim
+  - DIR=ubuntu/18.04
+  - DIR=ubuntu/19.04
+  - DIR=ubuntu/16.04
+before_install:
+  - echo "$DOCKER_PASSWORD" | docker login -u ${DOCKER_USERNAME} --password-stdin
+install:
+  - docker pull "${DOCKER_USERNAME}/${DIR/\/*/}ccache:${DIR#*/}" || true
+script:
+  - cd $DIR
+  - docker build --compress -t "${DOCKER_USERNAME}/${DIR/\/*/}ccache:${DIR#*/}" .
+  - docker push "${DOCKER_USERNAME}/${DIR/\/*/}ccache:${DIR#*/}"
