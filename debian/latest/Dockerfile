@@ -1,1 +1,1 @@
-10/Dockerfile
+../10/Dockerfile
