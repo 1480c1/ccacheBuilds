@@ -10,14 +10,12 @@ RUN apk add --no-progress --no-cache \
     ccache=3.4.1-r0 \
     clang-dev=5.0.1-r1 \
     gcc=6.4.0-r9 \
-    g++=6.4.0-r9 && \
-    ln -s /usr/bin/ccache /usr/local/bin/clang && \
-    ln -s /usr/bin/ccache /usr/local/bin/clang++ && \
-    ln -s /usr/bin/ccache /usr/local/bin/gcc && \
-    ln -s /usr/bin/ccache /usr/local/bin/g++ && \
-    ln -s /usr/bin/ccache /usr/local/bin/cc && \
-    ln -s /usr/bin/ccache /usr/local/bin/c++ && \
-    mkdir /root/.ccache/ && \
-    ln -s /root/.ccache/ /ccache
+    g++=6.4.0-r9
+RUN ln -s /usr/bin/ccache /usr/local/bin/clang
+RUN ln -s /usr/bin/ccache /usr/local/bin/clang++
+RUN mkdir /root/.ccache/
+RUN ln -s /root/.ccache/ /ccache
+
+ENV PATH="/usr/lib/ccache/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 VOLUME [ "/ccache" ]
