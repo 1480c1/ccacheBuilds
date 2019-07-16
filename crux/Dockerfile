@@ -8,14 +8,12 @@ LABEL maintainer="Christopher Degawa <ccom@randomderp.com>" \
 
 RUN ports -u && \
     prt-get install \
-    sqlite3 \
-    expat \
-    libffi \
-    python \
-    ninja \
-    cmake \
-    clang \
     ccache && \
+    mkdir -p /usr/local/bin && \
+    ln -s /usr/bin/ccache /usr/local/bin/gcc && \
+    ln -s /usr/bin/ccache /usr/local/bin/g++ && \
+    ln -s /usr/bin/ccache /usr/local/bin/cc && \
+    ln -s /usr/bin/ccache /usr/local/bin/c++ && \
     mkdir /root/.ccache/ && \
     ln -s /root/.ccache/ /ccache
 
