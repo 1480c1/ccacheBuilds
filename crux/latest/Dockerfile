@@ -9,12 +9,10 @@ LABEL maintainer="Christopher Degawa <ccom@randomderp.com>" \
 RUN ports -u && \
     prt-get install \
     ccache && \
-    mkdir -p /usr/local/bin && \
-    ln -s /usr/bin/ccache /usr/local/bin/gcc && \
-    ln -s /usr/bin/ccache /usr/local/bin/g++ && \
-    ln -s /usr/bin/ccache /usr/local/bin/cc && \
-    ln -s /usr/bin/ccache /usr/local/bin/c++ && \
-    mkdir /root/.ccache/ && \
-    ln -s /root/.ccache/ /ccache
+    rm -rf /usr/ports/core
+RUN mkdir /root/.ccache/
+RUN ln -s /root/.ccache/ /ccache
+
+ENV PATH="/usr/lib/ccache:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 VOLUME [ "/ccache" ]
