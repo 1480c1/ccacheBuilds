@@ -10,9 +10,9 @@ RUN dnf install -y \
     gcc-7.3.1-6.fc27 \
     clang-5.0.2-1.fc27 \
     ccache-3.3.6-1.fc27 && \
-    mkdir /root/.ccache/ && \
-    ln -s /root/.ccache/ /ccache && \
     dnf clean all && \
     rm -rf /var/cache/dnf
+RUN mkdir /root/.ccache/
+RUN ln -s /root/.ccache/ /ccache
 
 VOLUME [ "/ccache" ]
