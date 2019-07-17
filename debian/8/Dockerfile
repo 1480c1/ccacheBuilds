@@ -13,14 +13,14 @@ RUN apt-get update && \
     clang=1:3.5-25 \
     ccache=3.1.12-1+b1 && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/* && \
-    ln -s /usr/bin/ccache /usr/local/bin/clang && \
-    ln -s /usr/bin/ccache /usr/local/bin/clang++ && \
-    ln -s /usr/bin/ccache /usr/local/bin/gcc && \
-    ln -s /usr/bin/ccache /usr/local/bin/g++ && \
-    ln -s /usr/bin/ccache /usr/local/bin/cc && \
-    ln -s /usr/bin/ccache /usr/local/bin/c++ && \
-    mkdir /root/.ccache/ && \
-    ln -s /root/.ccache/ /ccache
+    rm -rf /var/lib/apt/lists/*
+RUN update-alternatives --install /usr/local/bin/clang clang /usr/bin/ccache  100
+RUN update-alternatives --install /usr/local/bin/clang++ clang++ /usr/bin/ccache  100
+RUN update-alternatives --install /usr/local/bin/cc cc /usr/bin/ccache  100
+RUN update-alternatives --install /usr/local/bin/c++ c++ /usr/bin/ccache  100
+RUN mkdir /root/.ccache/
+RUN ln -s /root/.ccache/ /ccache
+
+ENV PATH="/usr/lib/ccache:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 VOLUME [ "/ccache" ]
